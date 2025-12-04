@@ -1,9 +1,6 @@
 package com.aluno.sistema_epi.dto;
 
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EpiDto {
 
-    @NotBlank(message = "Nome do epi não pode ser vazio !")
+    @NotBlank(message = "Nome do epi não pode ser vazio !")  // @NotBlank só funciona para String.
     @Size(max = 100, message = "Nome deve ter no maximo 100 caracteres !")
     private String nomeEpi;
 
@@ -27,9 +24,9 @@ public class EpiDto {
     @Size(max = 2000) // Para garantir contro - mas no banco ta TEXT então eu nao preciso coloca um maximo de caracteres.
     private String descricaoEpi;
 
-    @NotBlank(message = "Data de validade não pode ser vazia !")
+    @NotNull(message = "Data de validade não pode ser vazia !")
     @Future // Use para datas que devem obrigatoriamente estar no futuro.
-    private LocalDate dataValidade;
+    private LocalDate Validade;
 
     @Positive(message = "O estoque deve ser maior que 0 !") // Aceita apenas números maiores que 0
     private Integer estoque;

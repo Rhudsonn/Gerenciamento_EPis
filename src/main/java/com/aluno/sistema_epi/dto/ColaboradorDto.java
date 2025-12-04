@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ColaboradorDto {
 
-    @NotBlank(message = "Nome não pode ser vazio !")
+    @NotBlank(message = "Nome não pode ser vazio !")  // @NotBlank só funciona para String.
     @Size(max = 100, message = "Nome não pode ultrapassar 100 caracteres !")
     private String nomeColaborador;
 

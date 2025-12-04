@@ -21,7 +21,7 @@ public class ColaboradorEntity {
     private String nomeColaborador;
 
     @Column(name = "matricula")
-    private String matriculaColaborador;
+    private String matricolaColaborador;
 
     @Column(name = "setor")
     private String setorColaborador;
