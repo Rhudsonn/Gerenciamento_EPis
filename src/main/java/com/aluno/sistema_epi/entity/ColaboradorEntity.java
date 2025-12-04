@@ -33,7 +33,9 @@ public class ColaboradorEntity {
     private String emailColaborador;
 
     // Relacionamento com Emprestimo
-    @OneToMany(mappedBy = "colaborador")
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
+    @ToString.Exclude  // evita StackOverflow no toString()
+    @EqualsAndHashCode.Exclude  // evita problemas em equals/hashCode com coleções
     private List<EmprestimoEntity> emprestimos;
 
 

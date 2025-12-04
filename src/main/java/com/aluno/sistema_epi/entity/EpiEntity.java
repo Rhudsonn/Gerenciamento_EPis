@@ -19,7 +19,7 @@ public class EpiEntity {
     private Integer idEpi;
 
     @Column(name = "nome")
-    private String nameEpi;
+    private String nomeEpi;
 
     @Column(name = "codigo")
     private String codigoEpi;
