@@ -41,6 +41,7 @@ public class ColaboradorService {
         for (ColaboradorEntity c : listarColaboradorEntity) {
             ColaboradorDto colaboradorDto = new ColaboradorDto();
 
+
             colaboradorDto.setNomeColaborador(c.getNomeColaborador());
             colaboradorDto.setMatricolaColaborador(c.getMatricolaColaborador());
             colaboradorDto.setSetorColaborador(c.getSetorColaborador());
@@ -63,7 +64,7 @@ public class ColaboradorService {
     //Atualizar Colaborador
     public ColaboradorEntity atualizarColaborador(Integer id, @Valid ColaboradorDto colaboradorDto) {
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado !."));
+                .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado (Id não encontrado)!. "));
 
         preencherColaborador(colaboradorEntity, colaboradorDto);  // As informaçoes estão no metodo auxiliar
 
