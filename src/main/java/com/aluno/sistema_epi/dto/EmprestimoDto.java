@@ -42,6 +42,10 @@ public class EmprestimoDto {
     @NotNull(message = "O id do EPI é obrigatório!")
     private Integer idEpi;
 
+    // Adicionei este campo para exibir os nome em listar emprestimo
+    private String nomeColaborador;
+    private String nomeEpi;
+
 
 
 
