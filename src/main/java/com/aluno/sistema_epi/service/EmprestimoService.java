@@ -56,6 +56,12 @@ public class EmprestimoService {
             emprestimoDto.setStatusEmprestimo(e.getStatusEmprestimo());
             emprestimoDto.setObservacoes(e.getObservacoes());
 
+            emprestimoDto.setIdColaborador(e.getColaborador().getIdColaborador());
+            emprestimoDto.setIdEpi(e.getEpi().getIdEpi());
+            emprestimoDto.setNomeColaborador(e.getColaborador().getNomeColaborador());
+            emprestimoDto.setNomeEpi(e.getEpi().getNomeEpi());
+
+
             listaEmprestimoDto.add(emprestimoDto);
         }
         return listaEmprestimoDto;
