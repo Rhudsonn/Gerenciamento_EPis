@@ -30,7 +30,7 @@ public class EpiService {
     }
 
     // Listar todos Epis
-    public List<EpiEntity> listarEpis(){
+    public List<EpiDto> listarEpis(){
         List<EpiEntity> listaEpiEntity = epiRepository.findAll();
         List<EpiDto> listaEpiDto = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class EpiService {
 
             listaEpiDto.add(epiDto);
         }
-        return listaEpiEntity;
+        return listaEpiDto;
     }
 
     // Buscar Epi por ID
