@@ -47,12 +47,6 @@ public class EmprestimoEntity {
     @Column(name = "observacoes")
     private String observacoes;
 
-    // Metodo auxiliar
-    public boolean isAtrasado(){
-        if (statusEmprestimo == StatusEmprestimo.EMPRESTADO && dataPrevista != null){
-            return LocalDate.now().isAfter(dataPrevista);
-        }
-        return false;
-    }
+
 
 }
