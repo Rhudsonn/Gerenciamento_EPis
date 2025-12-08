@@ -25,12 +25,12 @@ public class ColaboradorService {
 
 
     // Criar Colaborador
-    public ColaboradorEntity cadastraColaborador(@Valid ColaboradorDto colaboradorDto) {
+    public void cadastraColaborador(@Valid ColaboradorDto colaboradorDto) {
         ColaboradorEntity colaboradorEntity = new ColaboradorEntity();
 
-       preencherColaborador(colaboradorEntity, colaboradorDto);  // As informaçoes estão no metodo auxiliar
+        preencherColaborador(colaboradorEntity, colaboradorDto);  // As informaçoes estão no metodo auxiliar
 
-        return colaboradorRepository.save(colaboradorEntity);
+        colaboradorRepository.save(colaboradorEntity);
     }
 
     // Listar todos Colaboradores
@@ -41,6 +41,7 @@ public class ColaboradorService {
         for (ColaboradorEntity c : listarColaboradorEntity) {
             ColaboradorDto colaboradorDto = new ColaboradorDto();
 
+            colaboradorDto.setIdColaborador(c.getIdColaborador());
 
             colaboradorDto.setNomeColaborador(c.getNomeColaborador());
             colaboradorDto.setMatricolaColaborador(c.getMatricolaColaborador());
@@ -62,13 +63,13 @@ public class ColaboradorService {
 
 
     //Atualizar Colaborador
-    public ColaboradorEntity atualizarColaborador(Integer id, @Valid ColaboradorDto colaboradorDto) {
+    public void atualizarColaborador(Integer id, @Valid ColaboradorDto colaboradorDto) {
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado (Id não encontrado)!. "));
 
         preencherColaborador(colaboradorEntity, colaboradorDto);  // As informaçoes estão no metodo auxiliar
 
-        return colaboradorRepository.save(colaboradorEntity);
+        colaboradorRepository.save(colaboradorEntity);
     }
 
     // Deletar Colaborador
