@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "colaborador")
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +17,7 @@ public class ColaboradorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer idColaborador;
+
 
     @Column(name = "nome")
     private String nomeColaborador;
@@ -38,5 +40,7 @@ public class ColaboradorEntity {
     @EqualsAndHashCode.Exclude  // evita problemas em equals/hashCode com coleções
     private List<EmprestimoEntity> emprestimos;
 
-
 }
+
+
+
