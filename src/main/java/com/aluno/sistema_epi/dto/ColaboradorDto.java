@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ColaboradorDto {
 
+    // Adicionei este campo para exibir o ID do colaborador em listar colaboradores
+    private Integer idColaborador;
+
+
     @NotBlank(message = "Nome não pode ser vazio !")  // @NotBlank só funciona para String.
     @Size(max = 100, message = "Nome não pode ultrapassar 100 caracteres !")
     private String nomeColaborador;
@@ -31,4 +35,6 @@ public class ColaboradorDto {
     @NotBlank(message = "Email não pode ser vazio !")
     @Email(message = "Email invalido !")
     private String emailColaborador;
+
 }
+
