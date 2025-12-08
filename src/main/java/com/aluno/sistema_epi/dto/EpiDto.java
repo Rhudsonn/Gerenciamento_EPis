@@ -12,6 +12,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EpiDto {
 
+    // Adicionei este campo para exibir o ID do Epi em listar EPI
+    private Integer idEpi;
+
+
     @NotBlank(message = "Nome do epi não pode ser vazio !")  // @NotBlank só funciona para String.
     @Size(max = 100, message = "Nome deve ter no maximo 100 caracteres !")
     private String nomeEpi;
@@ -34,6 +38,5 @@ public class EpiDto {
     @NotBlank(message = "Categoria não pode ser vazio !")
     @Size(max = 50, message = "Categoria deve ter no maximo 50 caracteres !")
     private String categoria;
-
 
 }

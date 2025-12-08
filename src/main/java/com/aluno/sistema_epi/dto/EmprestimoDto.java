@@ -15,15 +15,19 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EmprestimoDto {
 
+    // Adicionei este campo para exibir os nome em listar emprestimo
+    private String nomeColaborador;
+    private String nomeEpi;
+
+
     @NotNull(message = "A data da retirada é obrigatória!")
     @PastOrPresent  // não pode estar no futuro
     private LocalDate dataRetirada;
 
     @NotNull(message = "Data prevista não pode ser vazia !")
-    @FutureOrPresent  // devolução tem que ser hoje ou depois
+    @FutureOrPresent(message = "A data prevista da devolução, deve ser hoje ou no futuro!")
     private LocalDate dataPrevista;
 
-    @NotNull(message = "Data da devolução não pode ser vazia !")
     @FutureOrPresent  // devolução tem que ser hoje ou depois
     private LocalDate dataDevolucao;
 
@@ -42,11 +46,5 @@ public class EmprestimoDto {
     @NotNull(message = "O id do EPI é obrigatório!")
     private Integer idEpi;
 
-    // Adicionei este campo para exibir os nome em listar emprestimo
-    private String nomeColaborador;
-    private String nomeEpi;
-
-
-
-
 }
+
