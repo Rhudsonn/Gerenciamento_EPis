@@ -27,7 +27,7 @@ public class EmprestimoService {
 
 
     // Criar Emprestimo
-    public EmprestimoEntity cadastraEmprestimo(@Valid EmprestimoDto emprestimoDto) {
+    public void cadastraEmprestimo(@Valid EmprestimoDto emprestimoDto) {
 
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(emprestimoDto.getIdColaborador())
                 .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado !."));
@@ -39,7 +39,7 @@ public class EmprestimoService {
 
         preencherEmprestimo(emprestimoEntity,emprestimoDto,colaboradorEntity,epiEntity);  // As informaçoes estão no metodo auxiliar
 
-        return emprestimoRepository.save(emprestimoEntity);
+        emprestimoRepository.save(emprestimoEntity);
     }
 
     // Listar todos Emprestimos
@@ -68,31 +68,31 @@ public class EmprestimoService {
     }
 
     // Buscar Emprestimo por ID
-    public EmprestimoEntity buscarPorId(Integer id){
+    public EmprestimoEntity buscarEmprestimoPorId(Integer id){
         return emprestimoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Emprestimo não encontrado com o ID: " +id));
         // EntityNotFoundException = é uma exceção padrão da JPA (Jakarta Persistence), usada quando você tenta buscar algo no banco de dados mas esse registro não existe.
     }
 
     //Atualizar Emprestimo
-    public  EmprestimoEntity atualizarEmprestimo(Integer id, @Valid EmprestimoDto emprestimoDto) {
+    public  void atualizarEmprestimo(Integer id, @Valid EmprestimoDto emprestimoDto) {
         EmprestimoEntity emprestimoEntity = emprestimoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Emprestimo não encontrado !."));
 
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(emprestimoDto.getIdColaborador())
-                        .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado !."));
+                .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado !."));
 
         EpiEntity epiEntity = epiRepository.findById(emprestimoDto.getIdEpi())
-                        .orElseThrow(() -> new EntityNotFoundException("EPI não encontrado !."));
+                .orElseThrow(() -> new EntityNotFoundException("EPI não encontrado !."));
 
         preencherEmprestimo(emprestimoEntity, emprestimoDto, colaboradorEntity, epiEntity); // As informaçoes estão no metodo auxiliar
 
-        return emprestimoRepository.save(emprestimoEntity);
+        emprestimoRepository.save(emprestimoEntity);
     }
 
     // Deletar Emprestimo
     public void deletarEmprestimo(Integer id) {
-        EmprestimoEntity emprestimoEntity = buscarPorId(id);
+        EmprestimoEntity emprestimoEntity = buscarEmprestimoPorId(id);
         emprestimoRepository.delete(emprestimoEntity);
     }
 
