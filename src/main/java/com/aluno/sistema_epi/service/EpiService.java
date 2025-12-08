@@ -21,12 +21,12 @@ public class EpiService {
     private final EpiRepository epiRepository;
 
     // Criar Epi
-    public EpiEntity cadastrarEpi(@Valid EpiDto epiDto){
+    public void cadastrarEpi(@Valid EpiDto epiDto){
         EpiEntity epiEntity = new EpiEntity();
 
         preencherEpi(epiEntity,epiDto);  // As informaçoes estão no metodo auxiliar
 
-        return epiRepository.save(epiEntity);
+        epiRepository.save(epiEntity);
     }
 
     // Listar todos Epis
@@ -37,6 +37,7 @@ public class EpiService {
         for (EpiEntity e : listaEpiEntity) {
             EpiDto epiDto = new EpiDto();
 
+            epiDto.setIdEpi(e.getIdEpi());
             epiDto.setNomeEpi(e.getNomeEpi());
             epiDto.setCodigoEpi(e.getCodigoEpi());
             epiDto.setDescricaoEpi(e.getDescricaoEpi());
@@ -57,13 +58,13 @@ public class EpiService {
     }
 
     //Atualizar Epi
-    public EpiEntity atualizarEpi(Integer id, @Valid EpiDto epiDto){
+    public void  atualizarEpi(Integer id, @Valid EpiDto epiDto){
         EpiEntity epiEntity = epiRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("EPI não foi encontrado !."));
 
         preencherEpi(epiEntity,epiDto);  // As informaçoes estão no metodo auxiliar
 
-        return epiRepository.save(epiEntity);
+        epiRepository.save(epiEntity);
     }
 
     // Deletar Epi
